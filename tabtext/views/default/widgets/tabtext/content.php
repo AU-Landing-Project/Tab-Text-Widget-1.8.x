@@ -5,7 +5,7 @@ $widget = $vars['entity'];
 // create tabs
 $tabs = array();
 for($i=1; $i<$widget->numtabs+1; $i++){
-  $tabfield = "tab{$i}";
+  $tabfield = "title{$i}";
   if(!empty($widget->$tabfield)){
     $tabs[] = array('title' => $widget->$tabfield, 'url' => 'javascript:void(0);', 'selected' => $i == 1 ? TRUE : FALSE, 'id' => $tabfield.$widget->guid);
   }
@@ -35,7 +35,7 @@ $(document).ready(function() {
 		$(this).addClass("elgg-state-selected");
 		var id = $(this).attr('id');
 		
-		tabtext_update_content(<?php echo $widget->guid; ?>, id[3]);
+		tabtext_update_content(<?php echo $widget->guid; ?>, id[5]);
 	});
 });
 </script>

@@ -8,7 +8,7 @@ $widget = get_entity($guid);
 
 // sanity check
 if($widget instanceof ElggWidget && is_numeric($num) && $num > 0){
-  $attribute = "content{$num}";
+  $attribute = "description{$num}";
   echo $widget->$attribute;
 }
 else{

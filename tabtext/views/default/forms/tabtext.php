@@ -16,11 +16,11 @@ if(!($widget instanceof ElggWidget)){
 // sanity check
 if($widget instanceof ElggWidget && is_numeric($numtabs) && $numtabs > 0){
   for($i=1; $i<$numtabs+1; $i++){
-    $tabfield = "tab{$i}";
-    $contentfield = "content{$i}";
+    $tabfield = "title{$i}";
+    $contentfield = "description{$i}";
     
     $options = array(
-      'name' => "params[tab{$i}]",
+      'name' => "params[title{$i}]",
       'value' => $widget->$tabfield,
       'class' => 'tabtextinput'
     );
@@ -29,7 +29,7 @@ if($widget instanceof ElggWidget && is_numeric($numtabs) && $numtabs > 0){
     
     // can't use elgg longtext input because we don't want tinymce
     echo elgg_echo('tabtext:content:label', array($i)) . '<br>';
-    echo "<textarea class=\"tabtextinput\" name=\"params[content{$i}]\">{$widget->$contentfield}</textarea><br><br>";
+    echo "<textarea class=\"tabtextinput\" name=\"params[description{$i}]\">{$widget->$contentfield}</textarea><br><br>";
   }
 }
 else{
