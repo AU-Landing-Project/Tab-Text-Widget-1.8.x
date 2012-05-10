@@ -6,7 +6,9 @@ $widget = $vars['entity'];
 $tabs = array();
 for($i=1; $i<$widget->numtabs+1; $i++){
   $tabfield = "tab{$i}";
-  $tabs[] = array('title' => $widget->$tabfield, 'url' => 'javascript:void(0);', 'selected' => $i == 1 ? TRUE : FALSE, 'id' => $tabfield.$widget->guid);
+  if(!empty($widget->$tabfield)){
+    $tabs[] = array('title' => $widget->$tabfield, 'url' => 'javascript:void(0);', 'selected' => $i == 1 ? TRUE : FALSE, 'id' => $tabfield.$widget->guid);
+  }
 }
 
 
@@ -19,10 +21,11 @@ for($i=0; $i<count($tabs); $i++){
 
 // output the tabs
 echo elgg_view('navigation/tabs', array('tabs' => $tabs));
+$content = elgg_view('tabtext/content', array('entity' => $widget));
 ?>
 
 <div id="tabtext_content_<?php echo $widget->guid; ?>">
-	<?php echo elgg_view('tabtext/content', array('entity' => $widget)); ?>
+	<?php echo $content ? $content : elgg_echo('tabtext:no:content'); ?>
 </div>
 
 <script>

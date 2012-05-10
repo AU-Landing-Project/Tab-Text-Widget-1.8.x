@@ -8,7 +8,7 @@ $options = array(
   'options' => array(1,2,3,4,5)
 );
 echo elgg_echo('tabtext:numtabs:label');
-echo elgg_view('input/dropdown', $options);
+echo elgg_view('input/dropdown', $options) . "<br><br>";
 
 ?>
 
