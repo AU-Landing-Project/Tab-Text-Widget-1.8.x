@@ -2,6 +2,7 @@
 
 $english = array(
   'tabtext' => "TabText",
+  'tabtext:admin:filter' => "Allow Administrators to submit unfiltered HTML?",
   'tabtext:content:label' => "Tab %s Content",
   'tabtext:description' => "Text/HTML widget as configurable tabbed content",
   'tabtext:invalid:parameters' => "Invalid parameters or permissions",

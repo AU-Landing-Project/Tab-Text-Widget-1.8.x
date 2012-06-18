@@ -22,16 +22,9 @@ for($i=1; $i<6; $i++){
         'id' => 'tabtext_' . $widget->guid . '_' . $i,
         'class' => 'tabtextinput',
     );
-    echo "<style>
-  #tabtext_{$widget->guid}_{$i}_parent {
-    display: block;
-    z-index: 999;
-  }
-  </style>
-";
+
     echo elgg_echo('tabtext:content:label', array($i)) . '<br>';
     echo elgg_view('input/longtext', $options) . "<br><br>";
-    //echo "<textarea class=\"tabtextinput\" name=\"params[description{$i}]\">{$widget->$contentfield}</textarea><br><br>";
   }
 
 echo "</div>";

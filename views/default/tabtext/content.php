@@ -9,7 +9,15 @@ $widget = get_entity($guid);
 // sanity check
 if($widget instanceof ElggWidget && is_numeric($num) && $num > 0){
   $attribute = "description{$num}";
-  echo elgg_view('output/longtext', array('value' => $widget->$attribute));
+  $nofilter = elgg_get_plugin_setting('nofilter', 'tabtext');
+  if(elgg_is_admin_logged_in() && $nofilter != 'no'){
+    // outputting raw value as admins don't get filtered.
+    // Non-admins are filtered on input so we should be safe
+    echo '<div class="elgg-output">' . $widget->$attribute . '</div>';
+  }
+  else{
+    echo elgg_view('output/longtext', array('value' => $widget->$attribute));
+  }
 }
 else{
   echo elgg_echo('tabtext:invalid:parameters');
