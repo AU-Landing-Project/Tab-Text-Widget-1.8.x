@@ -1,25 +1,37 @@
 <?php
 $widget = $vars['entity'];
 
-$options = array(
-  'name' => 'params[numtabs]',
-  'id' => 'numtabs'.$widget->guid,
-  'value' => $widget->numtabs ? $widget->numtabs : 3,
-  'options' => array(1,2,3,4,5)
-);
-echo elgg_echo('tabtext:numtabs:label');
-echo elgg_view('input/dropdown', $options) . "<br><br>";
+echo '<div class="tabtext-form-wrapper">';
 
-?>
+for($i=1; $i<6; $i++){
+    $tabfield = "title{$i}";
+    $contentfield = "description{$i}";
+    
+    $options = array(
+      'name' => "params[title{$i}]",
+      'value' => $widget->$tabfield,
+      'class' => 'tabtextinput'
+    );
+    echo elgg_echo('tabtext:tab:label', array($i)) . '<br>';
+    echo elgg_view('input/text', $options) . '<br><br>';
+    
+    // can't use elgg longtext input because we don't want tinymce
+    $options = array(
+        'name' => "params[description{$i}]",
+        'value' => $widget->$contentfield,
+        'id' => 'tabtext_' . $widget->guid . '_' . $i,
+        'class' => 'tabtextinput',
+    );
+    echo "<style>
+  #tabtext_{$widget->guid}_{$i}_parent {
+    display: block;
+    z-index: 999;
+  }
+  </style>
+";
+    echo elgg_echo('tabtext:content:label', array($i)) . '<br>';
+    echo elgg_view('input/longtext', $options) . "<br><br>";
+    //echo "<textarea class=\"tabtextinput\" name=\"params[description{$i}]\">{$widget->$contentfield}</textarea><br><br>";
+  }
 
-<div id="tabtext_widget_form_<?php echo $widget->guid; ?>">
-	<?php echo elgg_view('forms/tabtext', array('entity' => $widget)); ?>
-</div>
-
-<script>
-$(document).ready(function() {
-	$("#numtabs<?php echo $widget->guid; ?>").change(function(){
-		tabtext_update_form(<?php echo $widget->guid; ?>);
-	});
-});
-</script>
+echo "</div>";

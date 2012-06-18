@@ -4,10 +4,10 @@ $widget = $vars['entity'];
 
 // create tabs
 $tabs = array();
-for($i=1; $i<$widget->numtabs+1; $i++){
+for($i=1; $i<6; $i++){
   $tabfield = "title{$i}";
   if(!empty($widget->$tabfield)){
-    $tabs[] = array('title' => $widget->$tabfield, 'url' => 'javascript:void(0);', 'selected' => $i == 1 ? TRUE : FALSE, 'id' => $tabfield.$widget->guid);
+    $tabs[] = array('title' => elgg_view('output/text', array('value' => $widget->$tabfield)), 'url' => 'javascript:void(0);', 'selected' => $i == 1 ? TRUE : FALSE, 'id' => $tabfield.$widget->guid);
   }
 }
 

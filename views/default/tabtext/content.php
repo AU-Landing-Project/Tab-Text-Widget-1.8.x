@@ -9,7 +9,7 @@ $widget = get_entity($guid);
 // sanity check
 if($widget instanceof ElggWidget && is_numeric($num) && $num > 0){
   $attribute = "description{$num}";
-  echo $widget->$attribute;
+  echo elgg_view('output/longtext', array('value' => $widget->$attribute));
 }
 else{
   echo elgg_echo('tabtext:invalid:parameters');
