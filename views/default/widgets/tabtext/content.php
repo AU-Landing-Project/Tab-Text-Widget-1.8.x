@@ -37,6 +37,10 @@ $(document).ready(function() {
 		
 		tabtext_update_content(<?php echo $widget->guid; ?>, id[5]);
 	});
+  
+  // if we don't trigger tinymce forcefully then it doesn't bind to
+  // the textareas when the widget is first created
+  elgg.tinymce.init();
 });
 </script>
 
