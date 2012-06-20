@@ -3,10 +3,11 @@
 x.x:
 
 
-1.1 (06/18/2012):
+1.1 (06/20/2012):
  - urls are now parsed in content
  - removed selection of tab numbers - changing number of tabs before saving widget would lose any entered content
  - tabs no longer lost if upgrading from 1.7 to 1.8
+ - added tinymce to textareas (may extend beyond widget if widget is narrow)
 
 1.0 (05/10/2012):
 
