@@ -28,3 +28,15 @@ for($i=1; $i<6; $i++){
   }
 
 echo "</div>";
+
+// force page reload if this widget was just added
+// so that tinymce works properly
+if(elgg_is_xhr()){
+?>
+<script>
+  $(document).ready( function() {
+    location.reload(true);
+  });
+</script>
+<?php
+}
